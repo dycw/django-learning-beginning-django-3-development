@@ -7,12 +7,14 @@ from movie.views import about
 from movie.views import home
 from movie.views import signup
 
+
 urlpatterns = [
     path("admin/", site.urls),
     path("", home, name="home"),
     path("about/", about, name="about"),
     path("signup/", signup, name="signup"),
     path("news/", include("news.urls")),
+    path("movie/", include("movie.urls")),
 ]
 urlpatterns.extend(
     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
