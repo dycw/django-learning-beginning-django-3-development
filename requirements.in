@@ -1,3 +1,5 @@
 django >= 4.0.4, < 4.1
-pillow >= 9.1.0, < 9.2
 mysqlclient >= 2.1.0, < 2.2
+  # https://pypi.org/project/mysqlclient/
+  # sudo apt-get install python3-dev default-libmysqlclient-dev build-essential
+pillow >= 9.1.0, < 9.2
