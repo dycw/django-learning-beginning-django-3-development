@@ -1,5 +1,6 @@
 from typing import Any
 
+from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
@@ -35,6 +36,7 @@ def detail(request: HttpRequest, /, *, movie_pk: int) -> HttpResponse:
     return render(request, "detail.html", {"movie": movie, "reviews": reviews})
 
 
+@login_required
 def create_review(request: HttpRequest, /, *, movie_pk: int) -> HttpResponse:
     movie = get_object_or_404(Movie, pk=movie_pk)
     context: dict[str, Any] = {"form": ReviewForm, "movie": movie}
@@ -52,6 +54,7 @@ def create_review(request: HttpRequest, /, *, movie_pk: int) -> HttpResponse:
     return render(request, "create_review.html", context)
 
 
+@login_required
 def update_review(request: HttpRequest, /, *, review_pk: int) -> HttpResponse:
     review = get_object_or_404(Review, pk=review_pk)
     context: dict[str, Any] = {
@@ -69,6 +72,7 @@ def update_review(request: HttpRequest, /, *, review_pk: int) -> HttpResponse:
     return render(request, "update_review.html", context)
 
 
+@login_required
 def delete_review(request: HttpRequest, /, *, review_pk: int) -> HttpResponse:
     review = get_object_or_404(Review, pk=review_pk, user=request.user)
     review.delete()
