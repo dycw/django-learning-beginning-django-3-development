@@ -9,7 +9,7 @@ target-version = ["py310"]
 
 [tool.poetry]
 name = "django-learning"
-version = "0.0.2"
+version = "0.0.3"
 description = "Learning the Django framework"
 authors = ["Derek Wan <d.wan@icloud.com>"]
 license = "MIT"
@@ -58,18 +58,18 @@ addopts = ["-rsxX", "--color=auto", "--strict-markers"]
 filterwarnings = ["error", "ignore::DeprecationWarning"]
 minversion = "7.0"
 python_files = ["tests.py", "test_*.py"]
-testpaths = "src"
+testpaths = "app"
 xfail_strict = true
 looponfailroots = "src"
 DJANGO_SETTINGS_MODULE = "app.settings"
 
 [tool.pyright]
-include = ["src"]
+include = ["app"]
 exclude = ["**/migrations/**", "**/tests.py"]
 venvPath = ".venv"
 pythonVersion = "3.10"
 pythonPlatform = "Linux"
-executionEnvironments = [{ root = "src" }]
+executionEnvironments = [{ root = "app" }]
 typeCheckingMode = "strict"
 reportMissingTypeStubs = false
 reportUnknownArgumentType = false
