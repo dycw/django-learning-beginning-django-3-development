@@ -32,7 +32,23 @@
         </div>
         <button class="btn btn-primary" type="submit">Search</button>
       </form>
-      Searching for {{search_term}}
+      <p>Searching for {{search_term}}</p>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        {%for movie in movies%}
+        <div class="col" v-for="movie in movies">
+          <div class="card">
+            <img class="card-img-top" src="{{movie.image.url}}" />
+            <div class="card-body">
+              <h5 class="card-title fw-bold">{{movie.title}}</h5>
+              <p class="card-text">{{movie.description}}</p>
+              {%if movie.url%}
+              <a class="btn btn-primary" href="{{movie.url}}">Movie Link</a>
+              {%endif%}
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
       <br />
       <br />
       <h2>Join our mailing list:</h2>
