@@ -27,7 +27,17 @@
   <!-- nav -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
     <div class="container">
-      <a class="navbar-brand" href="{%url 'home'%}">Movies</a>
+      <a class="navbar-brand" href="{%url 'home'%}">
+        {%load static%}
+        <img
+          alt=""
+          class="d-inline-block align-text-top"
+          src="{%static 'images/movie.png'%}"
+          width="30"
+          height="24"
+        />
+        Movies</a
+      >
       <button
         aria-controls="navbarNavAltMarkup"
         aria-expanded="false"
