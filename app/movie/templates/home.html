@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- head -->
+  <head>
+    <!-- meta -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
+    <!-- title -->
+    <title>The title</title>
+  </head>
+
+  <!-- body -->
+  <body>
+    <div class="container">
+      <form action="">
+        <div class="mb-3">
+          <label class="form-label" for="search_movie">
+            Search for Movie:
+          </label>
+          <input class="form-control" name="search_movie" type="text" />
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+      </form>
+      Searching for {{search_term}}
+      <br />
+      <br />
+      <h2>Join our mailing list:</h2>
+      <form action="{%url 'signup'%}">
+        <div class="mb-3">
+          <label class="form-label" for="email">Enter your email:</label>
+          <input class="form-control" name="email" type="email" />
+        </div>
+        <button class="btn btn-primary" type="submit">Sign up</button>
+      </form>
+    </div>
+  </body>
+</html>
