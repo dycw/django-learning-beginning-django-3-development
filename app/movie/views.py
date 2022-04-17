@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from movie.forms import ReviewForm
 from movie.models import Movie
+from movie.models import Review
 
 
 def home(request: HttpRequest, /) -> HttpResponse:
@@ -30,7 +31,8 @@ def signup(request: HttpRequest, /) -> HttpResponse:
 
 def detail(request: HttpRequest, /, *, movie_pk: int) -> HttpResponse:
     movie = get_object_or_404(Movie, pk=movie_pk)
-    return render(request, "detail.html", {"movie": movie})
+    reviews = Review.objects.filter(movie=movie)
+    return render(request, "detail.html", {"movie": movie, "reviews": reviews})
 
 
 def create_review(request: HttpRequest, /, *, movie_pk: int) -> HttpResponse:
