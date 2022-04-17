@@ -8,3 +8,6 @@ class News(Model):
     headline = CharField(max_length=200)
     body = TextField()
     date = DateField()
+
+    def __str__(self) -> str:
+        return self.headline
