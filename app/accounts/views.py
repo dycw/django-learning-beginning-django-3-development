@@ -4,6 +4,7 @@ from accounts.forms import UserCreateForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
@@ -35,6 +36,7 @@ def signup_account(request: HttpRequest, /) -> HttpResponse:
     return render(request, "signup_account.html", context)
 
 
+@login_required
 def logout_account(request: HttpRequest, /) -> HttpResponse:
     logout(request)
     return redirect("home")
