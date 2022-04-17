@@ -364,7 +364,6 @@ pytest==7.1.1 \
     #   pytest-django
     #   pytest-forked
     #   pytest-instafail
-    #   pytest-randomly
     #   pytest-xdist
 pytest-django==4.5.2 \
     --hash=sha256:c60834861933773109334fe5a53e83d1ef4828f2203a1d6a0fa9972f4f75ab3e \
@@ -377,10 +376,6 @@ pytest-forked==1.4.0 \
 pytest-instafail==0.4.2 \
     --hash=sha256:19273fdf3f0f9a1cb4b7a0bc8aa1bdaaf6b0f62a681b693d5eca4626abc99782 \
     --hash=sha256:1ec440a177be89a9ed2759dade8e1f7a2b95bac74ae81dc91318d309bf4ebd4f
-    # via -r requirements-dev.in
-pytest-randomly==3.11.0 \
-    --hash=sha256:9f013b8c1923130f3d0a286fde56e1fc52cfb3547b8eedf2765c460cee979c7f \
-    --hash=sha256:a3c680d2b8150cf766311a80a1f92da64c3dd819045cda834fbf1b0ac4891610
     # via -r requirements-dev.in
 pytest-xdist==2.5.0 \
     --hash=sha256:4580deca3ff04ddb2ac53eba39d76cb5dd5edeac050cb6fbc768b0dd712b4edf \

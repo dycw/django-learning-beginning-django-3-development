@@ -35,7 +35,10 @@ pep8-naming >= 0.12.1, < 0.13
 pytest >= 7.1.1, < 7.2
 pytest-django >= 4.5.2, < 4.6
 pytest-instafail >= 0.4.2, < 0.5
-pytest-randomly >= 3.11.0, < 3.12
+# pytest-randomly >= 3.11.0, < 3.12 #
+  # ERROR: In --require-hashes mode, all requirements must have their versions pinned with ==. These do not:
+  # importlib-metadata>=3.6.0 from https://files.pythonhosted.org/packages/92/f2/c48787ca7d1e20daa185e1b6b2d4e16acd2fb5e0320bc50ffc89b91fa4d7/importlib_metadata-4.11.3-py3-none-any.whl#sha256=1208431ca90a8cca1a6b8af391bb53c1a2db74e5d1cef6ddced95d4b2062edc6 (from pytest-randomly==3.11.0->-r /tmp/tmp79si9lag (line 294))
+
 pytest-xdist >= 2.5.0, < 2.6
 
 # utilities
