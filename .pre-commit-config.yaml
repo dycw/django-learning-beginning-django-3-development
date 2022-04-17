@@ -141,11 +141,12 @@ repos:
             --generate-hashes,
             --no-annotate,
             --no-header,
+            --output-file=requirements/requirements.txt,
             --quiet,
             --upgrade,
-            requirements.in,
+            requirements/requirements.in,
           ]
-        files: ^requirements\.(in|txt)$
+        files: ^requirements/requirements\.(in|txt)$
       - id: pip-compile
         name: pip-compile requirements-dev.in
         args:
@@ -154,11 +155,12 @@ repos:
             --generate-hashes,
             --no-annotate,
             --no-header,
+            --output-file=requirements/dev.txt,
             --quiet,
             --upgrade,
-            requirements-dev.in,
+            requirements/dev.in,
           ]
-        files: ^requirements-dev\.(in|txt)$
+        files: ^requirements/dev\.(in|txt)$
   - repo: meta
     hooks:
       - id: check-useless-excludes
