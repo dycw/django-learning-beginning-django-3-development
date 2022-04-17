@@ -1,5 +1,6 @@
 from django.http import HttpRequest
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from movie.models import Movie
 
@@ -21,3 +22,8 @@ def about(_: HttpRequest) -> HttpResponse:
 def signup(request: HttpRequest) -> HttpResponse:
     email = request.GET.get("email")
     return render(request, "signup.html", {"email": email})
+
+
+def detail(request: HttpRequest, movie_id: int) -> HttpResponse:
+    movie = get_object_or_404(Movie, pk=movie_id)
+    return render(request, "detail.html", {"movie": movie})
