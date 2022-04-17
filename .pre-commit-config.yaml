@@ -126,7 +126,7 @@ repos:
       - id: shellcheck
   # others
   - repo: https://github.com/dycw/pre-commit-hooks
-    rev: 0.3.17
+    rev: 0.4.1
     hooks:
       - id: bump-version
         args: [--setup-cfg]
@@ -135,13 +135,32 @@ repos:
     hooks:
       - id: pip-compile
         name: pip-compile requirements.txt
-        args: [--allow-unsafe, --generate-hashes, --upgrade, requirements.txt]
-        files: ^requirements\.(in|txt)$
+        args:
+          [
+            --allow-unsafe,
+            --generate-hashes,
+            --no-annotate,
+            --no-header,
+            --output-file=requirements/requirements.txt,
+            --quiet,
+            --upgrade,
+            requirements/requirements.in,
+          ]
+        files: ^requirements/requirements\.(in|txt)$
       - id: pip-compile
         name: pip-compile requirements-dev.in
         args:
-          [--allow-unsafe, --generate-hashes, --upgrade, requirements-dev.in]
-        files: ^requirements-dev\.(in|txt)$
+          [
+            --allow-unsafe,
+            --generate-hashes,
+            --no-annotate,
+            --no-header,
+            --output-file=requirements/dev.txt,
+            --quiet,
+            --upgrade,
+            requirements/dev.in,
+          ]
+        files: ^requirements/dev\.(in|txt)$
   - repo: meta
     hooks:
       - id: check-useless-excludes

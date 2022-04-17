@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-dj2x#)m2jlajgt!^aknvr+f$stl(dppoftt94$+x!_iv-eguz0"  # noqa: E501, S105
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -81,6 +81,13 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+DATABASES_MYSQL = {
+    "ENGINE": "django.db.backends.mysql",
+    "NAME": "derekwan$default",
+    "USER": "derekwan",
+    "PASSWORD": "password",
+    "HOST": "derekwan.mysql.pythonanywhere-services.com",
+}
 
 
 # Password validation
@@ -113,8 +120,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+STATIC_ROOT = BASE_DIR / "app/static/"
 STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "app" / "static"]
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
