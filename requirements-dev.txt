@@ -84,8 +84,13 @@ django==4.0.4 \
     --hash=sha256:4e8177858524417563cc0430f29ea249946d831eacb0068a1455686587df40b5
     # via
     #   -c requirements.txt
+    #   django-debug-toolbar
     #   django-stubs
     #   django-stubs-ext
+django-debug-toolbar==3.2.4 \
+    --hash=sha256:644bbd5c428d3283aa9115722471769cac1bec189edf3a0c855fd8ff870375a9 \
+    --hash=sha256:6b633b6cfee24f232d73569870f19aa86c819d750e7f3e833f2344a9eb4b4409
+    # via -r requirements-dev.in
 django-stubs==1.10.1 \
     --hash=sha256:2ec21fc14dba392156e0ec8438e1863c86ddb295f1c8d88eecd7e0e04977c843 \
     --hash=sha256:dfffa933e3c7f5cae92c860fbd6cf4ae58c4f78eed93843612f863207c9e0e1a
@@ -440,6 +445,7 @@ sqlparse==0.4.2 \
     # via
     #   -c requirements.txt
     #   django
+    #   django-debug-toolbar
 stack-data==0.2.0 \
     --hash=sha256:45692d41bd633a9503a5195552df22b583caf16f0b27c4e58c98d88c8b648e12 \
     --hash=sha256:999762f9c3132308789affa03e9271bbbe947bf78311851f4d485d8402ed858e
