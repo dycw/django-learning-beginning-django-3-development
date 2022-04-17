@@ -135,7 +135,7 @@ repos:
     hooks:
       - id: pip-compile
         name: pip-compile requirements.txt
-        args: [--allow-unsafe, --generate-hashes, --upgrade, requirements.txt]
+        args: [--allow-unsafe, --generate-hashes, --upgrade, requirements.in]
         files: ^requirements\.(in|txt)$
       - id: pip-compile
         name: pip-compile requirements-dev.in
