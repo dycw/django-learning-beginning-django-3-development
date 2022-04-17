@@ -11,7 +11,17 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+import typed_settings
+
+
+@typed_settings.settings
+class Settings:
+    debug: bool = False
+
+
+SETTINGS = typed_settings.load(cls=Settings, appname="app")
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -22,7 +32,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-dj2x#)m2jlajgt!^aknvr+f$stl(dppoftt94$+x!_iv-eguz0"  # noqa: E501, S105
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
+
+DEBUG = SETTINGS.debug
+
 
 ALLOWED_HOSTS = ["*"]
 
@@ -56,7 +69,7 @@ ROOT_URLCONF = "app.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "app" / "templates"],
+        "DIRS": [BASE_DIR / "app/templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -75,20 +88,19 @@ WSGI_APPLICATION = "app.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+
+_DB_DEBUG = {
+    "ENGINE": "django.db.backends.sqlite3",
+    "NAME": BASE_DIR / "db.sqlite3",
 }
-DATABASES_MYSQL = {
+_DB_PROD = {
     "ENGINE": "django.db.backends.mysql",
     "NAME": "derekwan$default",
     "USER": "derekwan",
     "PASSWORD": "password",
     "HOST": "derekwan.mysql.pythonanywhere-services.com",
 }
-
+DATABASES = {"default": _DB_DEBUG if DEBUG else _DB_PROD}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -120,11 +132,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / "app/static/"
 STATIC_URL = "static/"
+if not SETTINGS.debug:
+    STATIC_ROOT = BASE_DIR / "static"
 
-MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
