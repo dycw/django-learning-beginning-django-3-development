@@ -4,6 +4,6 @@ from django.shortcuts import render
 from news.models import News
 
 
-def news(request: HttpRequest) -> HttpResponse:
+def news(request: HttpRequest, /) -> HttpResponse:
     newss = News.objects.all()
     return render(request, "news.html", {"newss": newss})

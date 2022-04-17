@@ -13,7 +13,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 
 
-def signup_account(request: HttpRequest) -> HttpResponse:
+def signup_account(request: HttpRequest, /) -> HttpResponse:
     context: dict[str, Any] = {"form": UserCreateForm}
     if request.method == "POST":
         post = request.POST
@@ -35,12 +35,12 @@ def signup_account(request: HttpRequest) -> HttpResponse:
     return render(request, "signup_account.html", context)
 
 
-def logout_account(request: HttpRequest) -> HttpResponse:
+def logout_account(request: HttpRequest, /) -> HttpResponse:
     logout(request)
     return redirect("home")
 
 
-def login_account(request: HttpRequest) -> HttpResponse:
+def login_account(request: HttpRequest, /) -> HttpResponse:
     context: dict[str, Any] = {"form": AuthenticationForm}
     if request.method == "POST":
         post = request.POST

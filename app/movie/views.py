@@ -9,7 +9,7 @@ from movie.forms import ReviewForm
 from movie.models import Movie
 
 
-def home(request: HttpRequest) -> HttpResponse:
+def home(request: HttpRequest, /) -> HttpResponse:
     if search_term := request.GET.get("search_movie"):
         movies = Movie.objects.filter(title__icontains=search_term)
     else:
