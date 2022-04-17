@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-dj2x#)m2jlajgt!^aknvr+f$stl(dppoftt94$+x!_iv-eguz0"  # noqa: E501, S105
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -56,7 +56,7 @@ ROOT_URLCONF = "app.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "app" / "templates"],
+        "DIRS": [BASE_DIR / "app/templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -120,11 +120,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / "app/static/"
+STATIC_ROOT = BASE_DIR / "static"
 STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "app/static"]
 
+MEDIA_ROOT = BASE_DIR / "app/media"
 MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
