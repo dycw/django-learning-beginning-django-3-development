@@ -48,5 +48,28 @@ def create_review(request: HttpRequest, /, *, movie_pk: int) -> HttpResponse:
             review.user = request.user
             review.movie = movie
             review.save()
-            return redirect("detail", review.movie.pk)
+            return redirect("detail", movie_pk=review.movie.pk)
     return render(request, "create_review.html", context)
+
+
+def update_review(request: HttpRequest, /, *, review_pk: int) -> HttpResponse:
+    review = get_object_or_404(Review, pk=review_pk)
+    context: dict[str, Any] = {
+        "form": ReviewForm(instance=review),
+        "review": review,
+    }
+    if request.method == "POST":
+        form = ReviewForm(request.POST, instance=review)
+        try:
+            form.save()
+        except ValueError:
+            context["error"] = "bad data passed in"
+        else:
+            return redirect("detail", movie_pk=review.movie.pk)
+    return render(request, "update_review.html", context)
+
+
+def delete_review(request: HttpRequest, /, *, review_pk: int) -> HttpResponse:
+    review = get_object_or_404(Review, pk=review_pk, user=request.user)
+    review.delete()
+    return redirect("detail", movie_pk=review.movie.pk)
