@@ -124,11 +124,23 @@ repos:
     rev: v0.8.0.4
     hooks:
       - id: shellcheck
+  # others
   - repo: https://github.com/dycw/pre-commit-hooks
     rev: 0.3.17
     hooks:
       - id: bump-version
         args: [--setup-cfg]
+  - repo: https://github.com/jazzband/pip-tools
+    rev: 6.6.0
+    hooks:
+      - id: pip-compile
+        name: pip-compile requirements-dev.in
+        args: [--allow-unsafe, --generate-hashes, requirements-dev.in]
+        files: ^requirements-dev\.(in|txt)$
+      - id: pip-compile
+        name: pip-compile requirements.txt
+        args: [--allow-unsafe, --generate-hashes, requirements.txt]
+        files: ^requirements\.(in|txt)$
   - repo: meta
     hooks:
       - id: check-useless-excludes
