@@ -1,8 +1,8 @@
 from typing import Any
 from typing import TYPE_CHECKING
 
-from django.forms.models import ModelForm
-from django.forms.widgets import Textarea
+from django.forms import ModelForm
+from django.forms import Textarea
 from movie.models import Review
 
 
