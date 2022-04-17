@@ -67,7 +67,7 @@ DJANGO_SETTINGS_MODULE = "app.settings"
 [tool.pyright]
 include = ["app"]
 exclude = ["**/migrations/**", "**/tests.py"]
-venvPath = ".venv"
+venvPath = ".direnv"
 pythonVersion = "3.10"
 pythonPlatform = "Linux"
 executionEnvironments = [{ root = "app" }]
