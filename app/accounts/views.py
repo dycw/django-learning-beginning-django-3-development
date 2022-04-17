@@ -1,7 +1,10 @@
 from typing import Any
 
 from accounts.forms import UserCreateForm
+from django.contrib.auth import authenticate
 from django.contrib.auth import login
+from django.contrib.auth import logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.http import HttpRequest
@@ -30,3 +33,24 @@ def signupaccount(request: HttpRequest) -> HttpResponse:
         else:
             context["error"] = "Passwords do not match"
     return render(request, "signupaccount.html", context)
+
+
+def logoutaccount(request: HttpRequest) -> HttpResponse:
+    logout(request)
+    return redirect("home")
+
+
+def loginaccount(request: HttpRequest) -> HttpResponse:
+    context: dict[str, Any] = {"form": AuthenticationForm}
+    if request.method == "POST":
+        post = request.POST
+        if (
+            user := authenticate(
+                request, username=post["username"], password=post["password"]
+            )
+        ) is None:
+            context["error"] = "User name and password do not match"
+        else:
+            login(request, user)
+            return redirect("home")
+    return render(request, "loginaccount.html", context)
